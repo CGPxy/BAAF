@@ -18,12 +18,10 @@ import tensorflow.keras.backend as K
 from tensorflow.keras.models import *
 from tensorflow.python.layers import utils
 from tensorflow.keras import regularizers
-# from model_function import *
 from tensorflow.keras import layers
 
 img_w = 384  
 img_h = 384
-
 n_label = 3
 
 
@@ -36,11 +34,9 @@ def channel_fc(data):
     excitation = Dense(units=out_dim[3])(excitation)
     excitation = Activation('sigmoid')(excitation)
     excitation = Reshape((1, 1, out_dim[3]))(excitation)
-
     data_scale = multiply([data, excitation])
-
     return data_scale
-
+    
 def expend_as(tensor, rep):
     my_repeat = Lambda(lambda x, repnum: K.repeat_elements(x, repnum, axis=3), arguments={'repnum': rep})(tensor)
     return my_repeat
@@ -50,9 +46,7 @@ def spatial_fc(data):
     squeeze = Conv2D(1, 1, strides=1, padding='same')(data)
     excitation = Activation('sigmoid')(squeeze)
     excitation = expend_as(excitation, out_dim[3])
-
     data_scale = multiply([data, excitation])
-
     return data_scale
 
 def ConvBlock(data, filte):
@@ -67,9 +61,7 @@ def ConvBlock(data, filte):
 def updata(filte, data, skipdata):
     shape_x = K.int_shape(skipdata)
     shape_g = K.int_shape(data)
-
     up1 = UpSampling2D(size=(shape_x[1] // shape_g[1], shape_x[2] // shape_g[2]))(data)
-
     concatenate = Concatenate()([up1, skipdata])
     concatenate = Conv2D(filte, (3, 3), padding="same")(concatenate)
     concatenate = BatchNormalization()(concatenate)
@@ -112,9 +104,8 @@ def BAAF_fc_att(data, size):
 
 def DeepBAAFNet_att():   
     inputs = Input((img_h, img_w, 3))
-
     Conv1 = ConvBlock(data=inputs, filte=64)
-
+    
     pool1 = MaxPooling2D(pool_size=(2, 2))(Conv1)
     Conv2 = ConvBlock(data=pool1, filte=128)
 
@@ -159,7 +150,6 @@ def DeepBAAFNet_att():
 
     outconv = Conv2D(1, (1, 1), strides=(1, 1), padding='same')(up7)
     out = Activation('sigmoid')(outconv)
-
 
     model = Model(inputs=inputs, outputs=out)
     return model
