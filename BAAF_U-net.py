@@ -96,8 +96,6 @@ def BAAF_fc_att(data, size):
     x = Lambda(lambda x: tf.stack(x, axis=-1))([channel_data, spatial_data])
 
     r = multiply([scale, x])
-    r = Lambda(lambda x: K.sum(x, axis=-1))(r)
-
     return r
 
 
