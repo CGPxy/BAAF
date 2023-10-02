@@ -4,7 +4,9 @@
 
 
 ## Network
-![DSEU-net](https://user-images.githubusercontent.com/52651150/227098404-49f32876-49c2-4f7d-876e-cc354ae174b6.png)
+![BAAF](https://github.com/CGPxy/BAAF/assets/52651150/ca0eeba4-8960-441d-9f27-8b51e3ac0a36)
+![U-net with BAAF](https://github.com/CGPxy/BAAF/assets/52651150/64b318d0-7708-473a-b4ba-1cb9d16eff96)
+
 
 
 ## 3. Datasets：
