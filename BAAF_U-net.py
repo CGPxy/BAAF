@@ -35,10 +35,6 @@ def channel_fc(data):
     excitation = Reshape((1, 1, out_dim[3]))(excitation)
     data_scale = multiply([data, excitation])
     return data_scale
-    
-def expend_as(tensor, rep):
-    my_repeat = Lambda(lambda x, repnum: K.repeat_elements(x, repnum, axis=3), arguments={'repnum': rep})(tensor)
-    return my_repeat
 
 def spatial_fc(data):
     out_dim = K.int_shape(data)
