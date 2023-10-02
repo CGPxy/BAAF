@@ -5,8 +5,10 @@
 
 ## Network
 ![BAAF](https://github.com/CGPxy/BAAF/assets/52651150/ca0eeba4-8960-441d-9f27-8b51e3ac0a36)
-![U-net with BAAF](https://github.com/CGPxy/BAAF/assets/52651150/64b318d0-7708-473a-b4ba-1cb9d16eff96)
+The proposed benchmark attention adaptive framework.
 
+![U-net with BAAF](https://github.com/CGPxy/BAAF/assets/52651150/64b318d0-7708-473a-b4ba-1cb9d16eff96)
+The U-shaped network we constructed using the BAAF block.
 
 
 ## 3. Datasets：
