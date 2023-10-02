@@ -29,7 +29,6 @@ def channel_fc(data):
     out_dim = K.int_shape(data)
     squeeze = GlobalAveragePooling2D()(data)
     excitation = Dense(units=out_dim[3] // 4)(squeeze)
-    # excitation = Dense(units=out_dim)(squeeze)
     excitation = Activation('relu')(excitation)
     excitation = Dense(units=out_dim[3])(excitation)
     excitation = Activation('sigmoid')(excitation)
